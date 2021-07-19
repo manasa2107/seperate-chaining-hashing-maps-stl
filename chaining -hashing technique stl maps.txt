@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+	void print(map<int,list<int>>&m) {
+	    for(auto i:m) {
+	        cout<<i.first<<" ";
+	        for(auto j:i.second) 
+	            cout<<j<<" "; 
+	            cout<<endl;
+	        	    }
+	}
+	int main() {
+	    map<int,list<int>>m; 
+	    int t;
+	    cin>>t;
+	    while(t--) {
+	        string c;
+	        cin>>c;
+	        if(c=="Insert") {
+	            int ikey;
+	            cin>>ikey;
+	            m[ikey%7].push_back(ikey);
+	            print(m);
+	        }
+	        else if(c=="Search"){
+	            int skey;
+	            cin>>skey;
+	            for(auto i:m[skey%7])            
+	            if(i==skey) {
+	                cout<<"ele found"<<endl;
+	                break;
+	            }
+	        }
+	        else if(c=="Remove") {
+	            cout<<"Before removing"<<endl;
+	            print(m);
+	            int rkey;
+	            cin>>rkey;
+	            m[rkey%7].remove(rkey);
+	            cout<<"After removal"<<endl;
+	            print(m);
+	        }
+	    }
+}
